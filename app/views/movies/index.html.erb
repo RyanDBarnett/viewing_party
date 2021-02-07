@@ -6,7 +6,7 @@
 <section class="section">
   <% @films.each do |film| %>
     <div id="movie-<%= film.id %>">
-      <%= film.title %>
+      <%= link_to film.title, movie_path(film.id) %>
       <p>Vote Average: <%= film.vote_average %></p>
     </div>
   <% end %>
