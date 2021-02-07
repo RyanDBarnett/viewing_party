@@ -6,7 +6,7 @@ class Film
               :genres,
               :overview,
               :credits
-  # RYAN - I added cast above and below. An alternative is to make an actor poros to create separately.
+
   def initialize(attributes)
     @id = attributes[:id]
     @title = attributes[:title]
@@ -16,12 +16,20 @@ class Film
     @overview = attributes[:overview]
     @credits = attributes[:credits]
   end
-  # RYAN NEEDED TO MAKE SEPARATE METHODS TO AVOID NIL ERRORS. Dream Drive!
+
   def cast
     credits[:cast].map { |member| [member[:name], member[:character]] }
   end
 
   def list_genres
     genres.map { |genre| genre[:name] }.join(', ')
+  end
+
+  def runtime_hours
+    (@runtime / 60).floor
+  end
+
+  def runtime_minutes
+    @runtime % 60
   end
 end
