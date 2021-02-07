@@ -25,11 +25,9 @@ RSpec.describe('Dashboard') do
       end
 
       it 'should display all of the users parties' do
-        movie1 = Movie.create(mdb_id: '10719')
-        party1 = Party.create(movie: movie1, start_time: '2021-03-01 01:00:00 UTC')
+        party1 = Party.create(mdb_id: 10719, start_time: '2021-03-01 01:00:00 UTC')
         viewer1 = Viewer.create(status: 'host', party: party1, user: @user)
-        movie2 = Movie.create(mdb_id: '143569')
-        party2 = Party.create(movie: movie2, start_time: '2021-03-02 01:00:00 UTC')
+        party2 = Party.create(mdb_id: 143569, start_time: '2021-03-02 01:00:00 UTC')
         viewer2 = Viewer.create(status: 'guest', party: party2, user: @user)
 
         visit dashboard_path
