@@ -65,6 +65,7 @@ RSpec.describe 'movies index', type: :feature do
         visit movies_path
 
         fill_in :search, with: 'sdkfjaksdjf'
+        click_button 'Search'
 
         expect(current_path).to eq(movies_path)
         expect(page).to have_content('0 Movies')
