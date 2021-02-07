@@ -1,11 +1,7 @@
 class MoviesController < ApplicationController
   def index
     block_public_access
-    @films = if params[:search].present?
-               MovieDbFacade.search_films(params[:search])
-             else
-               MovieDbFacade.discover_films
-             end
+    @films = params[:search].present? ? MovieDbFacade.search_films(params[:search]) : MovieDbFacade.discover_films
   end
 
   def show

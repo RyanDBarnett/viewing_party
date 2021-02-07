@@ -24,4 +24,12 @@ class Film
   def list_genres
     genres.map { |genre| genre[:name] }.join(', ')
   end
+
+  def runtime_hours
+    (@runtime / 60).floor
+  end
+
+  def runtime_minutes
+    @runtime % 60
+  end
 end
