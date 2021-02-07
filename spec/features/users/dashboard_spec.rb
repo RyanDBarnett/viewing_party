@@ -24,7 +24,7 @@ RSpec.describe('Dashboard') do
         expect(page).to have_button('Discover Movies')
       end
 
-      it 'should display all of the users parties' do
+      it 'should display all of the users parties', :vcr do
         movie1 = Movie.create(mdb_id: '10719')
         party1 = Party.create(movie: movie1, start_time: '2021-03-01 01:00:00 UTC')
         viewer1 = Viewer.create(status: 'host', party: party1, user: @user)

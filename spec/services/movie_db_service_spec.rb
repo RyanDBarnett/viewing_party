@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe MovieDbService do
   describe 'class methods' do
-    it 'returns top 40 movies' do
+    it 'returns top 40 movies', :vcr do
       
       search = MovieDbService.call_top_films
 

@@ -8,7 +8,7 @@ RSpec.describe 'user can discover movies', type: :feature do
         allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
       end
 
-      it 'i see a button to discover top 40 movies and it takes me to movies index' do
+      it 'i see a button to discover top 40 movies and it takes me to movies index', :vcr do
         visit discover_path
 
         expect(page).to have_button("Discover Top 40 Movies")
@@ -18,7 +18,7 @@ RSpec.describe 'user can discover movies', type: :feature do
         expect(current_path).to eq(movies_path)
       end
 
-      it 'i can see a button to search for movies' do
+      it 'i can see a button to search for movies', :vcr do
         visit discover_path
 
         within('#movie_search') do
@@ -36,6 +36,7 @@ RSpec.describe 'user can discover movies', type: :feature do
 
     describe 'sad path' do
       it 'non-users are redirected to rooth path and shown a flash message when they attempt to access discover page' do
+        allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
         visit discover_path
 
         expect(current_path).to eq(root_path)
