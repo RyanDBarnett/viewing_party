@@ -16,7 +16,7 @@ class Film
     @overview = attributes[:overview]
     @credits = attributes[:credits]
   end
-  
+
   def cast
     credits[:cast].map { |member| [member[:name], member[:character]] }
   end
