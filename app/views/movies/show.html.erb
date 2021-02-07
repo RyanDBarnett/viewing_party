@@ -5,12 +5,22 @@
 <ul>
   <li>
     <p>Vote Average: <%= @movie.vote_average %></p>
+  </li>
+  <li>
     <p>Runtime: <%= @movie.runtime_hours %> Hour(s) <%= @movie.runtime_minutes %> Minute(s)</p>
+  </li>
+  <li>
     <p>Genres: <%= @movie.list_genres %></p>
+  </li>
+  <li>
     <p>Summary: <%= @movie.overview %></p>
-    <p>Cast: </p>
-    <% @movie.cast.each do |member| %>
-        <p><%= member[0]%> as <%= member[1]%></p>
-    <% end %>
+  </li>
+  <li>
+    <ul id='cast'>
+      <p>Cast: </p>
+      <% @movie.first_10_cast.each do |member| %>
+          <li class='cast-member'><%= member[0]%> as <%= member[1]%></li>
+      <% end %>
+    <ul>
   </li>
 </ul

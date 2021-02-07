@@ -21,6 +21,10 @@ class Film
     credits[:cast].map { |member| [member[:name], member[:character]] }
   end
 
+  def first_10_cast
+    cast.first(10)
+  end
+
   def list_genres
     genres.map { |genre| genre[:name] }.join(', ')
   end
