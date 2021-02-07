@@ -18,17 +18,19 @@ RSpec.describe 'movies index', type: :feature do
         expect(page).to have_content("40 Movies")
 
         within("#movie-#{top_movie.id}") do
-          expect(page).to have_content(top_movie.title)
+          expect(page).to have_link(top_movie.title)
           expect(page).to have_content("Vote Average: #{top_movie.vote_average}")
         end
 
         within("#movie-#{last_movie.id}") do
-          expect(page).to have_content(last_movie.title)
+          expect(page).to have_link(last_movie.title)
           expect(page).to have_content("Vote Average: #{last_movie.vote_average}")
         end
       end
 
       it 'i can search by movie title' do
+        elf = MovieDbFacade.get_movie_info(10719)
+        
         visit movies_path
 
         within('#movie_search') do
@@ -37,8 +39,8 @@ RSpec.describe 'movies index', type: :feature do
           expect(current_path).to eq(movies_path)
         end
 
-        expect(page).to have_content("Elf")
-        expect(page).to have_content("Vote Average: 6.6")
+        expect(page).to have_link(elf.title)
+        expect(page).to have_content(elf.vote_average)
         expect(page).to_not have_content("Wonder Woman: 1984")
       end
     end
@@ -68,7 +70,7 @@ RSpec.describe 'movies index', type: :feature do
         expect(page).to have_content('0 Movies')
       end
 
-      it 'redirects a user that is not signed in to the root path and gives a flash message', :skip_before do
+      it 'redirects a user that is not signed in to the root path and gives a flash message' do
         visit movies_path
         
         expect(current_path).to eq(root_path)
