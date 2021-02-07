@@ -35,9 +35,20 @@ RSpec.describe Film do
       }
       @film = Film.new(attrs)
     end
+
     describe 'cast' do
-      it "returns an array where the first element is an array of actor names and the second element is an array of corresponding characters" do
+      it "returns an array where each element is an array where index 0 is the actor name and 1 is the name of the character they play" do
         expect(@film.cast).to eq([["Turo Pajala", "Mary Gifford"], ["Frank Gerry", "Bird one"]])
+      end
+    end
+
+    describe 'first_10_cast' do
+      it 'returns the first 10 elements in the films cast array' do
+        expect(@film.first_10_cast).to eq([1,2,3,4,5,6,7,8,9,10])
+      end
+
+      it 'returns all of the elements if the cast is already less than 10' do
+        expect(@film.first_10_cast).to eq([1,2,3])
       end
     end
 
