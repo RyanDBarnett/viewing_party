@@ -20,7 +20,7 @@ RSpec.describe 'movies index', type: :feature do
         end
       end
 
-      it 'i can search by movie title' do
+      it 'i can search by movie title', :vcr do
         visit movies_path
 
         # MAYBE CHANGE TO CLASS . SO WE CAN FORMAT EVERY SEARCH BAR THE SAME WAY
