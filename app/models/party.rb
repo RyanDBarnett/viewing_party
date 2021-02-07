@@ -9,6 +9,6 @@ class Party < ApplicationRecord
   end
 
   def movie_title
-    MovieDbFacade.get_movie_info(self.mdb_id).title
+    MovieDbFacade.get_movie_info(mdb_id).title
   end
 end
