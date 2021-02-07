@@ -16,6 +16,10 @@ class MovieDbService
       movie_info(mdb_id)
     end
 
+    def call_movie_reviews(mdb_id)
+      movie_reviews(mdb_id)
+    end
+
     private
 
     # RYAN - I ended up just adding line 20 (below) to get credits
@@ -24,7 +28,14 @@ class MovieDbService
         req.params['api_key'] = ENV['TMDB_API_KEY']
         req.params['append_to_response'] = 'credits'
       end
-      JSON.parse(response.body, symbolize_names: true)
+      parse_data(response)
+    end
+
+    def movie_reviews(mdb_id)
+      response = conn.get("movie/#{mdb_id}/reviews") do |req|
+        req.params['api_key'] = ENV['TMDB_API_KEY']
+      end
+      parse_data(response)
     end
 
     def discover(page)

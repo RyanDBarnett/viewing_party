@@ -8,6 +8,7 @@
     <p>Runtime: <%= @movie.runtime_hours %> Hour(s) <%= @movie.runtime_minutes %> Minute(s)</p>
     <p>Genres: <%= @movie.list_genres %></p>
     <p>Summary: <%= @movie.overview %></p>
+    <p>Total Reviews Count: <%= @movie.review_count %></p>
     <p>Cast: </p>
     <% @movie.cast.each do |member| %>
         <p><%= member[0]%> as <%= member[1]%></p>
