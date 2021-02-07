@@ -1,15 +1,10 @@
 class MoviesController < ApplicationController
   def index
     block_public_access
-    if params[:search].present?
-      @films = MovieDbFacade.search_films(params[:search])
-    else
-      @films = MovieDbFacade.discover_films
-    end
+    @films = params[:search].present? ? MovieDbFacade.search_films(params[:search]) : MovieDbFacade.discover_films
   end
 
   def show
-    movie_id = Movie.find_by(id: params[:id]).mdb_id
-    @movie = MovieDbFacade.get_movie_info(movie_id)
+    @movie = MovieDbFacade.get_movie_info(params[:id])
   end
 end

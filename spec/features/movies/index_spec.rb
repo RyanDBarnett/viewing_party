@@ -30,8 +30,8 @@ RSpec.describe 'movies index', type: :feature do
           expect(current_path).to eq(movies_path)
         end
 
-        expect(page).to have_content("Elf")
-        expect(page).to have_content("Vote Average: 6.6")
+        expect(page).to have_link('Elf')
+        expect(page).to have_content('6.6')
         expect(page).to_not have_content("Wonder Woman: 1984")
       end
     end

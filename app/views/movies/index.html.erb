@@ -6,7 +6,7 @@
 <section class="section">
   <% @films.each do |film| %>
     <ul class="movie">
-      <li class="title"><%= film.title %></li>
+      <li class="title"><%= link_to film.title, movie_path(film.id) %></li>
       <li class="vote_avg">Vote Average: <%= film.vote_average %></li>
     </ul>
   <% end %>
