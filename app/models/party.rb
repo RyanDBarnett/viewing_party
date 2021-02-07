@@ -1,8 +1,7 @@
 class Party < ApplicationRecord
-  validates :movie, presence: true
+  validates :mdb_id, presence: true
   validates :start_time, presence: true
 
-  belongs_to :movie
   has_many :viewers, dependent: :destroy
 
   def viewer_status(id)
@@ -10,6 +9,6 @@ class Party < ApplicationRecord
   end
 
   def movie_title
-    MovieDbFacade.get_movie_info(movie.mdb_id).title
+    MovieDbFacade.get_movie_info(self.mdb_id).title
   end
 end
