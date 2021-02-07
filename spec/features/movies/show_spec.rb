@@ -27,6 +27,12 @@ RSpec.describe 'movies show page', type: :feature do
         expect(page).to_not have_content('Adam as Professor Etz')
       end
 
+      it 'only displays the first 10 cast members' do
+        within '#cast' do
+          expect(page.all(:css, '.cast-member').size).to eq(10)
+        end
+      end
+
       xit "displays review informtion" do
       end
     end
