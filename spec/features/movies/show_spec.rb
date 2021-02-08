@@ -31,5 +31,17 @@ RSpec.describe 'movies show page', type: :feature do
         expect(page.all(:css, '.cast-member').size).to eq(10)
       end
     end
+
+    it 'it displays the review author and rating', :vcr do
+      movie = MovieDbFacade.get_movie_info(3)
+
+      visit movie_path(3)
+
+      within '#reviews' do
+        expect(page.all(:css, '.review').size).to eq(1)
+        expect(page).to have_content("Author: #{movie.reviews[0][:author]}")
+        expect(page).to have_content("Rating: #{movie.reviews[0][:author_details][:rating]}")
+      end
+    end
   end
 end
