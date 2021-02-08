@@ -12,9 +12,9 @@
     <h3>Summary</h3>
     <p><%= @movie.overview %></p>
     <h3>Cast</h3>
-    <ul>
-        <% @movie.cast.each do |member| %>
-            <li><%= member[0]%> as <%= member[1]%></li>
+    <ul id="cast">
+        <% @movie.first_10_cast.each do |member| %>
+            <li class="cast-member"><%= member[0]%> as <%= member[1]%></li>
         <% end %>
     </ul>
 </section>
