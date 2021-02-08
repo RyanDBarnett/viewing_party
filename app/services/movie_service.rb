@@ -25,7 +25,7 @@ class MovieService
     def movie_info(mdb_id)
       response = conn.get("movie/#{mdb_id}") do |req|
         req.params['api_key'] = ENV['TMDB_API_KEY']
-        req.params['append_to_response'] = 'credits'
+        req.params['append_to_response'] = 'credits,reviews'
       end
       parse_data(response)
     end
