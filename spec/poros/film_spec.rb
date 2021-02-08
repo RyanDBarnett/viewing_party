@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Film do
-  it 'exists' do
+  it 'builds a Film object' do
+    null = nil
     attrs = {
       id: 1,
       title: 'The Birds',
@@ -13,13 +14,16 @@ RSpec.describe Film do
     }
     film = Film.new(attrs)
 
-    expect(film.title).to eq('The Birds')
-    expect(film.vote_average).to eq(8.4)
-    expect(film.id).to eq(1)
-    expect(film.runtime).to eq(500)
-    expect(film.list_genres).to eq('Horror, Historical')
-    expect(film.overview).to eq('Damn these birds are mad!')
-    expect(film.credits).to eq({cast: [{name: "Turo Pajala", character: "Mary Gifford"}, {name: "Frank Gerry", character: "Bird one"} ]})
+    expect(film).to be_a(Film)
+    expect(film).to have_attributes(
+      title: 'The Birds',
+      vote_average: 8.4,
+      id: 1,
+      runtime: 500,
+      overview: 'Damn these birds are mad!',
+      genres: [{id: 1, name: 'Horror'}, {id: 2, name: 'Historical'}],
+      credits: {cast: [{name: "Turo Pajala", character: "Mary Gifford"}, {name: "Frank Gerry", character: "Bird one"} ]}
+    )
   end
 
   describe 'instance methods' do
@@ -39,6 +43,10 @@ RSpec.describe Film do
       it "returns an array where the first element is an array of actor names and the second element is an array of corresponding characters" do
         expect(@film.cast).to eq([["Turo Pajala", "Mary Gifford"], ["Frank Gerry", "Bird one"]])
       end
+    end
+
+    it "can return list of genres" do
+      expect(@film.list_genres).to eq('Horror, Historical')
     end
 
     describe 'runtime_hours' do

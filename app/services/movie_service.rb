@@ -1,4 +1,4 @@
-class MovieDbService
+class MovieService
   class << self
     def call_top_films
       page_one = discover(1)
@@ -22,7 +22,6 @@ class MovieDbService
 
     private
 
-    # RYAN - I ended up just adding line 20 (below) to get credits
     def movie_info(mdb_id)
       response = conn.get("movie/#{mdb_id}") do |req|
         req.params['api_key'] = ENV['TMDB_API_KEY']
@@ -59,7 +58,7 @@ class MovieDbService
     def conn
       Faraday.new('https://api.themoviedb.org/3/')
     end
-
+    # Is this necessary? Actually adds two lines of code.
     def parse_data(response)
       JSON.parse(response.body, symbolize_names: true)
     end
