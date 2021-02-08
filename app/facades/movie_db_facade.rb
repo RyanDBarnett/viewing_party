@@ -1,12 +1,12 @@
 class MovieDbFacade
   class << self
     def discover_films
-      data = MovieDbService.call_top_films
+      data = MovieService.call_top_films
       create_films(data)
     end
 
     def search_films(query)
-      data = MovieDbService.call_search_films(query)
+      data = MovieService.call_search_films(query)
       create_films(data)
       # right now returns [] if no films, if we want nil:
       # @films .eahc do
@@ -15,7 +15,7 @@ class MovieDbFacade
     end
 
     def get_movie_info(mdb_id)
-      data = MovieDbService.call_movie_info(mdb_id)
+      data = MovieService.call_movie_info(mdb_id)
       @film = Film.new(data)
     end
 

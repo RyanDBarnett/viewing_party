@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe MovieDbService do
+RSpec.describe MovieService do
   describe 'class methods' do
     it 'returns top 40 movies', :vcr do
       
-      search = MovieDbService.call_top_films
+      search = MovieService.call_top_films
 
       expect(search).to be_a Hash
       expect(search[:results]).to be_an Array

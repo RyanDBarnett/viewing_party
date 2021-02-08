@@ -1,4 +1,4 @@
-class MovieDbService
+class MovieService
   class << self
     def call_top_films
       page_one = discover(1)
