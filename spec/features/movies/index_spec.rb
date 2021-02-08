@@ -6,8 +6,11 @@ RSpec.describe 'movies index', type: :feature do
       @user = create(:user, email: 'test@email.com')
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
     end
+
     describe 'happy path' do  
-      it 'lists 40 most highest rated movies', :vcr do
+      it 'lists 40 most highest rated movies' do
+        VCR.insert_cassette("spec/fixtures/vcr_cassettes/happy_path/discovers_top_40_films")
+
         visit movies_path
 
         expect(page).to have_content("40 Movies")
@@ -20,7 +23,9 @@ RSpec.describe 'movies index', type: :feature do
         end
       end
 
-      it 'i can search by movie title', :vcr do
+      it 'i can search by movie title' do
+        VCR.insert_cassette("spec/fixtures/vcr_cassettes/happy_path/searches_for_films")
+
         visit movies_path
 
         # MAYBE CHANGE TO CLASS . SO WE CAN FORMAT EVERY SEARCH BAR THE SAME WAY
@@ -36,35 +41,35 @@ RSpec.describe 'movies index', type: :feature do
       end
     end
 
-    describe 'sad path' do
-      it 'returns top movies if search field is submitted blank', :vcr do        
-        visit movies_path
+    # describe 'sad path' do
+    #   it 'returns top movies if search field is submitted blank', :vcr do        
+    #     visit movies_path
 
-        fill_in :search, with: ''
+    #     fill_in :search, with: ''
 
-        expect(current_path).to eq(movies_path)
-        expect(page).to have_content('40 Movies')
-        expect(page).to have_css(".movie", count: 40)
-      end
+    #     expect(current_path).to eq(movies_path)
+    #     expect(page).to have_content('40 Movies')
+    #     expect(page).to have_css(".movie", count: 40)
+    #   end
 
-      it 'returns 0 movies when no matches exist', :vcr do        
-        visit movies_path
+    #   it 'returns 0 movies when no matches exist', :vcr do        
+    #     visit movies_path
 
-        fill_in :search, with: 'sdkfjaksdjf'
-        click_button 'Search'
+    #     fill_in :search, with: 'sdkfjaksdjf'
+    #     click_button 'Search'
 
-        expect(current_path).to eq(movies_path)
-        expect(page).to have_content('0 Movies')
-        expect(page).to have_css(".movie", count: 0)
-      end
+    #     expect(current_path).to eq(movies_path)
+    #     expect(page).to have_content('0 Movies')
+    #     expect(page).to have_css(".movie", count: 0)
+    #   end
 
-      it 'redirects a user that is not signed in to the root path and gives a flash message', :vcr do
-        allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(nil)
-        visit movies_path
+    #   it 'redirects a user that is not signed in to the root path and gives a flash message', :vcr do
+    #     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(nil)
+    #     visit movies_path
         
-        expect(current_path).to eq(root_path)
-        expect(page).to have_content('Members only! Sign up or login to access that page.')
-      end
-    end
+    #     expect(current_path).to eq(root_path)
+    #     expect(page).to have_content('Members only! Sign up or login to access that page.')
+    #   end
+    # end
   end
 end

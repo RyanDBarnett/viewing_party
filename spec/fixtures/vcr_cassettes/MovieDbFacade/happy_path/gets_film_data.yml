@@ -52,13 +52,15 @@ http_interactions:
       Vary:
       - Accept-Encoding
       X-Cache:
-      - Miss from cloudfront
+      - Hit from cloudfront
       Via:
-      - 1.1 a44b9db7a2d103360945ab52619e5016.cloudfront.net (CloudFront)
+      - 1.1 48a6ccbb0ddb052ab512a3422295bd39.cloudfront.net (CloudFront)
       X-Amz-Cf-Pop:
       - DEN50-C2
       X-Amz-Cf-Id:
-      - ce1alXZ_OgPq7k54KkuLIQMAkpjqUh_noutknoh1q3EG2iCD0RSk4Q==
+      - jRf5_G7ZBUXvBhTIkC5I_Zvu1XALjZbDhhiNeXz0tGGxeiylMdVDng==
+      Age:
+      - '20986'
     body:
       encoding: ASCII-8BIT
       string: '{"adult":false,"backdrop_path":"/yNr7tuh3Ka3XLaVniaDmt6wXUho.jpg","belongs_to_collection":null,"budget":32000000,"genres":[{"id":35,"name":"Comedy"},{"id":10751,"name":"Family"},{"id":14,"name":"Fantasy"}],"homepage":"","id":10719,"imdb_id":"tt0319343","original_language":"en","original_title":"Elf","overview":"When
@@ -285,5 +287,5 @@ http_interactions:
         Department Coordinator"},{"adult":false,"gender":0,"id":1565967,"known_for_department":"Camera","name":"Patrick
         Stepien","original_name":"Patrick Stepien","popularity":0.98,"profile_path":null,"credit_id":"569ecdefc3a36858d2007a1f","department":"Camera","job":"First
         Assistant Camera"}]}}'
-  recorded_at: Mon, 08 Feb 2021 16:59:09 GMT
+  recorded_at: Mon, 08 Feb 2021 22:48:55 GMT
 recorded_with: VCR 6.0.0

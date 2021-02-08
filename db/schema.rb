@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2021_02_07_185330) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "mdb_id"
+    # Q: consider storing title so don't have to do many api calls
   end
 
   create_table "users", force: :cascade do |t|
