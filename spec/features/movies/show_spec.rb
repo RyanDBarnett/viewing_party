@@ -15,9 +15,9 @@ RSpec.describe 'movies show page', type: :feature do
                 expect(page).to_not have_content('Adam as Professor Etz')
             end
 
-            it 'displays the total reviews count' do
+            it 'displays the total reviews count', :vcr do
               movie = MovieDbFacade.get_movie_info(3)
-              # expected = movie_reviews[:total_results]
+              
               visit movie_path(3)
 
               expect(page).to have_content("Total Reviews Count: #{movie.review_count}")

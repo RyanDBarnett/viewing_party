@@ -25,7 +25,7 @@ http_interactions:
       Connection:
       - keep-alive
       Date:
-      - Mon, 08 Feb 2021 16:59:09 GMT
+      - Mon, 08 Feb 2021 21:25:44 GMT
       Server:
       - openresty
       Access-Control-Allow-Origin:
@@ -42,25 +42,25 @@ http_interactions:
       X-Memc-Key:
       - 702d0d54284c3362babf6d6cba4b9c2f24af7827
       X-Memc-Age:
-      - '3733'
+      - '19728'
       X-Memc-Expires:
-      - '17867'
+      - '1872'
       Etag:
       - W/"94fae127c4307bdfc4ed791f7248ae98"
       Last-Modified:
-      - Mon, 08 Feb 2021 16:59:09 GMT
+      - Mon, 08 Feb 2021 21:25:44 GMT
       Vary:
       - Accept-Encoding
       X-Cache:
       - Hit from cloudfront
       Via:
-      - 1.1 29f1da35ce271d2cdc88184ed0c1f86d.cloudfront.net (CloudFront)
+      - 1.1 4d0ecb5905192435c3fd204705c9fc24.cloudfront.net (CloudFront)
       X-Amz-Cf-Pop:
       - DEN50-C2
       X-Amz-Cf-Id:
-      - IW8hrLb46EpUaP93Kh9VAPk-qSxDNcCTUVjhAtuFbo-M0swb6L7FmQ==
+      - pfhrtKGgopMFwZVytd0EGi2b0VyXUgMUZF4FGom3Ev68W6TNcd6YoA==
       Age:
-      - '3832'
+      - '6'
     body:
       encoding: ASCII-8BIT
       string: '{"adult":false,"backdrop_path":"/yNr7tuh3Ka3XLaVniaDmt6wXUho.jpg","belongs_to_collection":null,"budget":32000000,"genres":[{"id":35,"name":"Comedy"},{"id":10751,"name":"Family"},{"id":14,"name":"Fantasy"}],"homepage":"","id":10719,"imdb_id":"tt0319343","original_language":"en","original_title":"Elf","overview":"When
@@ -287,5 +287,5 @@ http_interactions:
         Department Coordinator"},{"adult":false,"gender":0,"id":1565967,"known_for_department":"Camera","name":"Patrick
         Stepien","original_name":"Patrick Stepien","popularity":0.98,"profile_path":null,"credit_id":"569ecdefc3a36858d2007a1f","department":"Camera","job":"First
         Assistant Camera"}]}}'
-  recorded_at: Mon, 08 Feb 2021 18:03:01 GMT
+  recorded_at: Mon, 08 Feb 2021 21:25:50 GMT
 recorded_with: VCR 6.0.0

@@ -26,7 +26,7 @@ class MovieDbFacade
     end
 
     def get_movie_reviews(mdb_id)
-      json = MovieDbService.call_movie_reviews(mdb_id)
+      json = MovieService.call_movie_reviews(mdb_id)
     end
 
     private
