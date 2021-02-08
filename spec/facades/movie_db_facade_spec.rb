@@ -30,6 +30,7 @@ RSpec.describe MovieDbFacade do
 
   describe 'sad path' do
     it 'returns nil if no match is found in search', :vcr do
+      # We have too many VCR casettes. Can call specific ones.
       # VCR.use_casette()
       query = 'Asgjhhs hs68'
 
