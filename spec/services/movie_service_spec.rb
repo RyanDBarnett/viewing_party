@@ -32,8 +32,7 @@ RSpec.describe MovieService do
       expect(first_film[:vote_average]).to be_a(Numeric)
     end
 
-    it 'returns specific film' do
-      VCR.use_cassette('spec/fixtures/vcr_cassettes/movies_show_page/user_visits_movie_show_page')
+    it 'returns specific film', :vcr do
       mdb_id = 10719
       film = MovieService.call_movie_info(mdb_id)
 
