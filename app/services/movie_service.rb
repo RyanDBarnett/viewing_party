@@ -58,7 +58,7 @@ class MovieService
     def conn
       Faraday.new('https://api.themoviedb.org/3/')
     end
-    # Is this necessary? Actually adds two lines of code.
+
     def parse_data(response)
       JSON.parse(response.body, symbolize_names: true)
     end
