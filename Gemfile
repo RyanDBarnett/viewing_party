@@ -21,17 +21,22 @@ gem 'faraday'
 
 group :development, :test do
   gem 'pry'
+  gem 'figaro'
   gem 'travis'
-  gem 'shoulda-matchers'
+end
+
+group :test do
+  gem 'simplecov'
   gem 'rspec-rails'
   gem 'capybara'
-  gem 'simplecov'
+  gem 'shoulda-matchers'
   gem 'launchy'
   gem 'orderly'
   gem "awesome_print", :require => "ap"
-  gem 'figaro'
   gem 'factory_bot_rails'
   gem 'faker'
+  gem 'webmock'
+  gem 'vcr'
 end
 
 group :development do

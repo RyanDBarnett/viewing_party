@@ -1,26 +1,24 @@
-<h1>Movie Details For "<%= @movie.title %>"</h1>
+<h1><%= @movie.title %></h1>
 
 <h2>Movie Details</h2>
 
-<ul>
-  <li>
-    <p>Vote Average: <%= @movie.vote_average %></p>
-  </li>
-  <li>
-    <p>Runtime: <%= @movie.runtime_hours %> Hour(s) <%= @movie.runtime_minutes %> Minute(s)</p>
-  </li>
-  <li>
-    <p>Genres: <%= @movie.list_genres %></p>
-  </li>
-  <li>
-    <p>Summary: <%= @movie.overview %></p>
-  </li>
-  <li>
-    <ul id='cast'>
-      <p>Cast: </p>
-      <% @movie.first_10_cast.each do |member| %>
-          <li class='cast-member'><%= member[0]%> as <%= member[1]%></li>
-      <% end %>
+<section id="basic_info">
+  <p>Vote Average: <%= @movie.vote_average %></p>
+  <p>Runtime: <%= @movie.runtime_hours %> Hour(s) <%= @movie.runtime_minutes %> Minute(s)</p>
+  <p>Genres: <%= @movie.list_genres %></p>
+</section>
+
+<section id="summary_cast">
+    <h3>Summary</h3>
+    <p><%= @movie.overview %></p>
+    <h3>Cast</h3>
     <ul>
-  </li>
-</ul
+        <% @movie.first_10_cast.each do |member| %>
+            <li><%= member[0]%> as <%= member[1]%></li>
+        <% end %>
+    </ul>
+</section>
+
+<section id="reviews">
+    <p>Total Reviews Count: <%= @movie.review_count %></p>
+</section>

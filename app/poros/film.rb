@@ -36,4 +36,8 @@ class Film
   def runtime_minutes
     @runtime % 60
   end
+
+  def review_count
+    MovieDbFacade.get_movie_reviews(id)[:total_results]
+  end
 end
