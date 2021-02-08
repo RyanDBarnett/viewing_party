@@ -6,8 +6,11 @@ RSpec.describe 'movies index', type: :feature do
       @user = create(:user, email: 'test@email.com')
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
     end
+
     describe 'happy path' do  
-      it 'lists 40 most highest rated movies', :vcr do
+      it 'lists 40 most highest rated movies' do
+        VCR.insert_cassette("spec/fixtures/vcr_cassettes/happy_path/discovers_top_40_films")
+
         visit movies_path
 
         expect(page).to have_content("40 Movies")
@@ -18,9 +21,12 @@ RSpec.describe 'movies index', type: :feature do
           expect(page).to have_css(".title")
           expect(page).to have_css(".vote_avg")    
         end
+        VCR.eject_cassette("spec/fixtures/vcr_cassettes/happy_path/discovers_top_40_films")
       end
 
-      it 'i can search by movie title', :vcr do
+      it 'i can search by movie title' do
+        VCR.insert_cassette("spec/fixtures/vcr_cassettes/happy_path/searches_for_films")
+
         visit movies_path
 
         # MAYBE CHANGE TO CLASS . SO WE CAN FORMAT EVERY SEARCH BAR THE SAME WAY
@@ -33,11 +39,15 @@ RSpec.describe 'movies index', type: :feature do
         expect(page).to have_content('Elf')
         expect(page).to have_content('6.6')
         expect(page).to_not have_content("Wonder Woman: 1984")
+        VCR.eject_cassette("spec/fixtures/vcr_cassettes/happy_path/searches_for_films")
       end
     end
 
     describe 'sad path' do
-      it 'returns top movies if search field is submitted blank', :vcr do        
+      it 'returns top movies if search field is submitted blank' do 
+        # ASK INSTRUCTOR WHY THIS FEELS WRONG.
+        VCR.insert_cassette("spec/fixtures/vcr_cassettes/happy_path/discovers_top_40_films")
+       
         visit movies_path
 
         fill_in :search, with: ''
@@ -46,8 +56,9 @@ RSpec.describe 'movies index', type: :feature do
         expect(page).to have_content('40 Movies')
         expect(page).to have_css(".movie", count: 40)
       end
-
+# DO WE NEED THESE TESTS IF ALREADY TESTS IN FACADE SPEC?
       it 'returns 0 movies when no matches exist', :vcr do        
+        VCR.insert_cassette("spec/fixtures/vcr_cassettes/sad_path/returns_nil_if_no_match_is_found_in_search")
         visit movies_path
 
         fill_in :search, with: 'sdkfjaksdjf'

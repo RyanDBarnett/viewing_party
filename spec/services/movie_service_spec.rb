@@ -33,7 +33,6 @@ RSpec.describe MovieService do
     end
 
     it 'returns specific film', :vcr do
-      # VCR.use_cassette('movies_show_page/user_visits_movie_show_page')
       mdb_id = 10719
       film = MovieService.call_movie_info(mdb_id)
 
