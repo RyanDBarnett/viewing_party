@@ -39,4 +39,13 @@ RSpec.describe MovieDbFacade do
       expect(films).to eq([])
     end  
   end
+
+  it 'searches for films and returns objects', :vcr do
+    films = MovieDbFacade.search_films('Air Bud')
+
+    expect(films.count).to eq(6)
+    films.each do |film|
+      expect(film).to be_an_instance_of(Film)
+    end
+  end
 end

@@ -1,5 +1,11 @@
 class MovieDbFacade
   class << self
+    def get_films(params)
+      return discover_films unless params[:search].present?
+
+      search_films(params[:search])
+    end
+
     def discover_films
       data = MovieService.call_top_films
       create_films(data)
