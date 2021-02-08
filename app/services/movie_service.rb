@@ -16,6 +16,10 @@ class MovieService
       movie_info(mdb_id)
     end
 
+    def call_movie_reviews(mdb_id)
+      movie_reviews(mdb_id)
+    end
+
     private
 
     def movie_info(mdb_id)
@@ -23,7 +27,14 @@ class MovieService
         req.params['api_key'] = ENV['TMDB_API_KEY']
         req.params['append_to_response'] = 'credits'
       end
-      JSON.parse(response.body, symbolize_names: true)
+      parse_data(response)
+    end
+
+    def movie_reviews(mdb_id)
+      response = conn.get("movie/#{mdb_id}/reviews") do |req|
+        req.params['api_key'] = ENV['TMDB_API_KEY']
+      end
+      parse_data(response)
     end
 
     def discover(page)
@@ -47,7 +58,7 @@ class MovieService
     def conn
       Faraday.new('https://api.themoviedb.org/3/')
     end
-    # Is this necessary? Actually adds two lines of code.
+
     def parse_data(response)
       JSON.parse(response.body, symbolize_names: true)
     end
