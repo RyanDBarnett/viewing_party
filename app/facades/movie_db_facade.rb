@@ -25,6 +25,10 @@ class MovieDbFacade
       @film = Film.new(data)
     end
 
+    def get_movie_reviews(mdb_id)
+      MovieService.call_movie_reviews(mdb_id)
+    end
+
     private
 
     def create_films(data)

@@ -15,10 +15,15 @@ class Film
     @genres = attributes[:genres]
     @overview = attributes[:overview]
     @credits = attributes[:credits]
+    @reviews = attributes[:reviews]
   end
 
   def cast
     credits[:cast].map { |member| [member[:name], member[:character]] }
+  end
+
+  def first_10_cast
+    cast.first(10)
   end
 
   def list_genres
@@ -31,5 +36,13 @@ class Film
 
   def runtime_minutes
     @runtime % 60
+  end
+
+  def review_count
+    @reviews[:total_results]
+  end
+
+  def reviews
+    @reviews[:results]
   end
 end
