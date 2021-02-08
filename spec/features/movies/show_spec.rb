@@ -23,8 +23,10 @@ RSpec.describe 'movies show page', type: :feature do
         expect(page).to have_content("Total Reviews Count: #{movie.review_count}")
       end
     end
-    
-    it 'only displays the first 10 cast members' do
+
+    it 'only displays the first 10 cast members', :vcr do
+      visit movie_path(2)
+
       within '#cast' do
         expect(page.all(:css, '.cast-member').size).to eq(10)
       end
