@@ -15,6 +15,7 @@ class Film
     @genres = attributes[:genres]
     @overview = attributes[:overview]
     @credits = attributes[:credits]
+    @reviews = attributes[:reviews]
   end
 
   def cast
@@ -38,6 +39,6 @@ class Film
   end
 
   def review_count
-    MovieDbFacade.get_movie_reviews(id)[:total_results]
+    @reviews[:total_results]
   end
 end
