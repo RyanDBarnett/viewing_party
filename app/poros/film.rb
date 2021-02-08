@@ -41,4 +41,8 @@ class Film
   def review_count
     @reviews[:total_results]
   end
+
+  def reviews
+    @reviews[:results]
+  end
 end
