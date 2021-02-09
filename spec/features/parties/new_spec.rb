@@ -34,16 +34,28 @@ RSpec.describe "new party page" do
             jerry = @user.friends.create(email: 'jerry@example.com', name: 'jerry', password: "xyz")
             achmed = @user.friends.create(email: 'achmed@example.com', name: 'Achmed', password: "xyz")
 
+
             mdb_id = 10719
+            movie_title = "Elf"
             visit movie_path(mdb_id)
             click_button('Create a Viewing Party')
+            duration = 200
+            starttime = '2021-03-01 01:00:00 UTC'
 
-            fill_in :duration, with: 200
-            fill_in :start_time, with: '2021-02-29 01:00:00 UTC'
-            save_and_open_page
+            fill_in :duration, with: duration
+            fill_in :start_time, with: starttime
+            find(:css, "#party_viewers_#{jerry.id}").set(true)
+
             click_button 'Submit'
 
             expect(current_path).to eq(dashboard_path)
+            
+            save_and_open_page
+            
+            within(first('.viewing-parties')) do
+                expect(page).to have_content(starttime)
+                expect(page).to have_content(movie_title)
+            end
         end
 
 

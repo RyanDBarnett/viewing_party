@@ -2,15 +2,16 @@ class PartiesController < ApplicationController
 
     def new
         @party = Party.new
-        # @party = current_user.parties.new
     end
 
     def create
         new_party = current_user.parties.new(duration: params[:party][:duration],
             start_time: params[:party][:start_time],
-            mdb_id: params[:party][:mdb_id])
+            mdb_id: params[:party][:mdb_id],
+            movie_title: params[:party][:movie_title]
+        )
         # if Party.exists?(email: user[:email])
-        #   flash[:error`] = "User already exists."
+        #   flash[:error`] = "Party already exists."
         #   render :new and return
         # end
         if new_party.save
@@ -18,6 +19,14 @@ class PartiesController < ApplicationController
                 user: current_user,
                 status: 'host'
             )
+            params[:party][:viewers].each do |friend|
+                unless friend == ""
+                    new_party.viewers.create(
+                        user_id: friend,
+                        status: 'guest'
+                    )
+                end
+            end
             flash[:success] = "Yo! You started a party!"
             redirect_to dashboard_path
         else

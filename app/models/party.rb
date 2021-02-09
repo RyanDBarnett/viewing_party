@@ -1,6 +1,7 @@
 class Party < ApplicationRecord
   validates :mdb_id, presence: true
   validates :start_time, presence: true
+  validates :movie_title, presence: true
   # validate duration is numeric and > 0
   # validate start_time includes time
 
@@ -8,8 +9,7 @@ class Party < ApplicationRecord
   has_many :users, through: :viewers
 
   def viewer_status(id)
-    x = viewers.find_by(user_id: id)
-    x.status
+    viewers.find_by(user_id: id).status
   end
 
   def movie_title

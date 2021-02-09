@@ -13,6 +13,7 @@ Create a viewing party for <%= params[:movie] %>
     <%= form.collection_check_boxes :viewers, current_user.friends, :id, :name %>
 
     <%= form.hidden_field :mdb_id, id: :mdb_id, value: params[:movie_id] %>
+    <%= form.hidden_field :movie_title, id: :movie_title, value: params[:movie] %>
 
     <%= form.submit 'Submit' %>
   <% end %>
