@@ -47,7 +47,6 @@ RSpec.describe "new party page" do
             find(:css, "#party_viewers_#{jerry.id}").set(true)
 
             click_button 'Submit'
-
             expect(current_path).to eq(dashboard_path)
                         
             within(first('.viewing-parties')) do

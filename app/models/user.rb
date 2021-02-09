@@ -15,4 +15,9 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, presence: true, allow_blank: false
   validates :password, confirmation: { case_sensitive: true }
+
+  def all_friends
+    friends + inverse_friends
+  end
+
 end
