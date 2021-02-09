@@ -22,20 +22,6 @@ form input {
   margin: 10px 0;
 }
 
-.movies-container {
-  width: 90%;
-  margin: auto;
-}
-
-.movies-container, #cast {
-  list-style: none;
-}
-
-.movie {
-  display: flex;
-  justify-content: space-between;
-}
-
 body {
   display: flex;
   min-height: 100vh;
@@ -50,4 +36,14 @@ footer {
   display: flex;
   align-self: baseline;
   flex-direction: row;
+}
+
+.movies-container {
+  width: 90%;
+  margin: auto;
+}
+
+.movie {
+  display: flex;
+  justify-content: space-between;
 }
