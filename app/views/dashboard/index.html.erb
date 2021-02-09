@@ -1,4 +1,6 @@
-<%= button_to 'Discover Movies', discover_path, method: "get" %>
+<section class='button'>
+  <%= button_to 'Discover Movies', discover_path, method: "get" %>
+</section>
 
 <section class='friends'>
   <h2>Add a Friend:</h2>
@@ -10,9 +12,9 @@
   <% end %>
 
   <h2>My Friends:</h2>
-  <% unless @current_user.friends.empty? %>
+  <% unless current_user.friends.empty? %>
     <ul>
-      <% @current_user.friends.each do |friend| %>
+      <% current_user.friends.each do |friend| %>
         <li><%= friend.name %></li>
       <% end %>
     </ul>

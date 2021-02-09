@@ -1,0 +1,19 @@
+Create a viewing party for <%= params[:movie] %>
+
+<div id="party_form">
+  <%= form_with model: @party, local: true do |form| %>
+    <%= form.label :duration, 'Duration:' %>
+    <%= form.text_field :duration, id: :duration, value: params[:runtime] %>
+
+    <%= form.label :start_time, 'Start Time:' %>
+    <%= form.datetime_field :start_time, id: :start_time %>
+
+    <%= form.label :invite_friends %>
+    <%= form.collection_check_boxes :viewers, current_user.friends, :id, :name %>
+
+    <%= form.hidden_field :mdb_id, id: :mdb_id, value: params[:movie_id] %>
+    <%= form.hidden_field :movie_title, id: :movie_title, value: params[:movie] %>
+
+    <%= form.submit 'Submit' %>
+  <% end %>
+</div>
