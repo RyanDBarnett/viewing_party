@@ -7,10 +7,6 @@ nav a {
   margin: 10px 20px;
 }
 
-h1 {
-  text-align: center;
-}
-
 form {
   display: flex;
   flex-direction: column;

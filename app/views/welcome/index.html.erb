@@ -1,5 +1,11 @@
-<h2>Welcome to Viewing Party</h2>
+<div id='welcome-container'>
+  <h1>Welcome to Viewing Party</h1>
 
-<p>
-  For this project, you will be building an application to explore movies and create a viewing party event for you and your friends to watch a movie together. The application will require basic authentication.
-</p>
+  <p class='welcome-description'>
+    For this project, you will be building an application to explore movies and create a viewing party event for you and your friends to watch a movie together. The application will require basic authentication.
+  </p>
+
+  <%= render partial: './sessions/login_form' %>
+
+  <%= link_to 'New to Viewing Party? Register Here', new_user_path, id: 'welcome-register-link' %>
+</div>
