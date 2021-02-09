@@ -21,12 +21,3 @@ form {
 form input {
   margin: 10px 0;
 }
-
-.friends form {
-  flex-direction: row;
-  margin: 0;
-}
-
-.friends form input {
-  margin: 0 10px;
-}
