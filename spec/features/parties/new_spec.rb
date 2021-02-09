@@ -30,6 +30,22 @@ RSpec.describe "new party page" do
             expect(current_path).to eq(dashboard_path)
         end
 
+        it "can add friends and create viewing party", :vcr do
+            jerry = @user.friends.create(email: 'jerry@example.com', name: 'jerry', password: "xyz")
+            achmed = @user.friends.create(email: 'achmed@example.com', name: 'Achmed', password: "xyz")
+
+            mdb_id = 10719
+            visit movie_path(mdb_id)
+            click_button('Create a Viewing Party')
+
+            fill_in :duration, with: 200
+            fill_in :start_time, with: '2021-02-29 01:00:00 UTC'
+            save_and_open_page
+            click_button 'Submit'
+
+            expect(current_path).to eq(dashboard_path)
+        end
+
 
         # sad path puts in date and not time
         # sad path not signed in path

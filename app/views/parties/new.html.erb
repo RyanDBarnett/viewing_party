@@ -8,6 +8,10 @@ Create a viewing party for <%= params[:movie] %>
     <%= form.label :start_time, 'Start Time:' %>
     <%= form.datetime_field :start_time, id: :start_time %>
 
+    <%# current_user.friends.each do |friend| %>
+    <%= form.label :invite_friends %>
+    <%= form.collection_check_boxes :viewers, current_user.friends, :id, :name %>
+
     <%= form.hidden_field :mdb_id, id: :mdb_id, value: params[:movie_id] %>
 
     <%= form.submit 'Submit' %>
