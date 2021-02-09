@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe "new party page" do
+    before(:each) do
+        @user = create(:user, email: 'test@email.com')
+        allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
+    end
+
     describe "happy path" do
         it "displays movie details and form", :vcr do
             mdb_id = 10719
@@ -18,7 +23,7 @@ RSpec.describe "new party page" do
             click_button('Create a Viewing Party')
 
             fill_in :duration, with: 200
-            fill_in :start_date, with: '2021-02-29 01:00:00 UTC'
+            fill_in :start_time, with: '2021-02-29 01:00:00 UTC'
 
             click_button 'Submit'
 

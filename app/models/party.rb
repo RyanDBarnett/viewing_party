@@ -5,9 +5,12 @@ class Party < ApplicationRecord
   # validate start_time includes time
 
   has_many :viewers, dependent: :destroy
+  has_many :users, through: :viewers
 
   def viewer_status(id)
-    viewers.find_by(user_id: id).status
+    binding.pry
+    x = viewers.find_by(user_id: id)
+    x.status
   end
 
   def movie_title
