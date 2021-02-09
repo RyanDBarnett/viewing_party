@@ -1,0 +1,15 @@
+nav {
+  display: flex;
+  justify-content: flex-end;
+}
+
+h1 {
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  margin: auto;
+}
