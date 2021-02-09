@@ -10,26 +10,7 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require normalize
  *= require_tree .
- *= require_self
+ *
  */
-
- *= require normalize-rails
- *= require_self
- *= require_tree .
-
-body {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-}
-
-main {
-  flex: 1;
-}
-
-footer {
-  display: flex;
-  align-self: baseline;
-  flex-direction: row;
-}
