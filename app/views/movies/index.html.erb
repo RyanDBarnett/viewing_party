@@ -3,7 +3,7 @@
 <%= button_to 'Find Top Rated Movies', movies_path, method: :get %>
 <%= render partial: 'search' %>
 
-<section class="section">
+<section class="movies-container">
   <% @films.each do |film| %>
     <ul class="movie">
       <li class="title"><%= link_to film.title, movie_path(film.id) %></li>

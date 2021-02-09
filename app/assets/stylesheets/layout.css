@@ -21,3 +21,17 @@ form {
 form input {
   margin: 10px 0;
 }
+
+.movies-container {
+  width: 90%;
+  margin: auto;
+}
+
+.movies-container, #cast {
+  list-style: none;
+}
+
+.movie {
+  display: flex;
+  justify-content: space-between;
+}
