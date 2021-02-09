@@ -18,6 +18,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'rubocop', require: false
 gem 'bcrypt'
 gem 'faraday'
+gem 'normalize-rails'
 
 group :development, :test do
   gem 'pry'
