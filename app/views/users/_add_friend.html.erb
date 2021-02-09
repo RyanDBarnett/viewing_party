@@ -1,0 +1,5 @@
+  <%= form_with url: friendships_path, local: true do |form| %>
+    <%= form.email_field :email, value: "Friend's Email" %>
+    <%= form.submit 'Add Friend' %>
+  <% end %>
+  

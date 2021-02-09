@@ -3,15 +3,10 @@
 </section>
 
 <section class='friends'>
-  <h2>Add a Friend:</h2>
-  <%= form_with url: friendships_path, local: true do |form| %>
-    <%= form.label :email %>
-    <%= form.email_field :email %>
+  <h2>Friends:</h2>
 
-    <%= form.submit 'Add Friend' %>
-  <% end %>
+  <%= render partial: '/users/add_friend' %>
 
-  <h2>My Friends:</h2>
   <% unless current_user.friends.empty? %>
     <ul>
       <% current_user.friends.each do |friend| %>
@@ -28,11 +23,11 @@
   <% unless current_user.parties.empty? %>
   <ul>
     <% current_user.parties.each do |party|%>
-      <div id="party-<%= party.id %>">
-        <%= party.movie_title %>
-        <%= party.start_time %>
-        <%= party.viewer_status(current_user.id) %>
-      </div>
+      <li id="party-<%= party.id %>">
+        <div><%= party.movie_title %></div>
+        <div><%= party.start_time %></div>
+        <div><%= party.viewer_status(current_user.id).capitalize %></div>
+      </li>
     <% end %>
   </ul>
   <% else %>

@@ -38,18 +38,18 @@ RSpec.describe('Dashboard') do
         within("#party-#{party1.id}") do
           expect(page).to have_content("Elf")
           expect(page).to have_content(party1.start_time)
-          expect(page).to have_content(viewer1.status)
+          expect(page).to have_content(viewer1.status.capitalize)
         end
 
         within("#party-#{party2.id}") do
           expect(page).to have_content("Elf-Man")
           expect(page).to have_content(party2.start_time)
-          expect(page).to have_content(viewer2.status)
+          expect(page).to have_content(viewer2.status.capitalize)
         end
       end
 
       it 'should have a friends section' do
-        expect(page).to have_content('My Friends:')
+        expect(page).to have_content('Friends:')
         expect(page).to have_selector("section[class='friends']")
       end
 

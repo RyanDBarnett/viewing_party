@@ -15,6 +15,7 @@ class UsersController < ApplicationController
     # end
     if new_user.save
       session[:user_id] = new_user.id
+      flash[:success] = "Welcome, #{current_user.name}"
       redirect_to dashboard_path
     else
       flash[:error] = 'Your credentials need soem work bruh'

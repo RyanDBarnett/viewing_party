@@ -1,4 +1,9 @@
-Create a viewing party for <%= params[:movie] %>
+<% if params[:movie] %>
+  Create a Viewing Party for <%= params[:movie] %>
+<% elsif params[:party][:movie_title] %>
+  Create a Viewing Party for <%= params[:party][:movie_title] %>
+<% end %>
+
 
 <div id="party_form">
   <%= form_with model: @party, local: true do |form| %>
