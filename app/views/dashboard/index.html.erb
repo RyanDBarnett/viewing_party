@@ -7,7 +7,7 @@
 
   <%= render partial: '/users/add_friend' %>
 
-  <% unless current_user.friends.empty? %>
+  <% unless current_user.all_friends.empty? %>
     <ul>
       <% current_user.all_friends.each do |friend| %>
         <li><%= friend.name %></li>
