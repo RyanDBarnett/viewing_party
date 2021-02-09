@@ -3,6 +3,10 @@ nav {
   justify-content: flex-end;
 }
 
+nav a {
+  margin: 10px 20px;
+}
+
 h1 {
   text-align: center;
 }
@@ -12,4 +16,8 @@ form {
   flex-direction: column;
   width: 25%;
   margin: auto;
+}
+
+form input {
+  margin: 10px 0;
 }
