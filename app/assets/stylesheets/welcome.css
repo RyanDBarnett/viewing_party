@@ -1,0 +1,16 @@
+#welcome-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60%;
+  margin: auto;
+}
+
+#welcome-container p {
+  text-align: center;
+}
+
+#welcome-container input[type='submit'] {
+   width: fit-content;
+   margin: auto;
+}
