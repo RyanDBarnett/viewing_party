@@ -1,6 +1,5 @@
 class MoviesController < ApplicationController
   def index
-    block_public_access
     @films = MovieDbFacade.get_films(params)
   end
 
