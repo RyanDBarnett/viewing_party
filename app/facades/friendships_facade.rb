@@ -7,6 +7,7 @@ class FriendshipsFacade
         "Failed Friend Request. Already Friended User: #{friend.name}"
       else
         current_user.friendships.create!({ friend_id: friend.id })
+        "Friend request sent to #{friend.email}"
       end
     end
   end
