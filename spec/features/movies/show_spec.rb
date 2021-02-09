@@ -38,6 +38,9 @@ RSpec.describe 'movies show page', type: :feature do
     end
 
     it "displays a link to create a new party" do
+      @user = create(:user, email: 'test@email.com')
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
+
       expect(page).to have_button('Create a Viewing Party')
 
       click_on 'Create a Viewing Party'

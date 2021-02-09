@@ -49,9 +49,7 @@ RSpec.describe "new party page" do
             click_button 'Submit'
 
             expect(current_path).to eq(dashboard_path)
-            
-            save_and_open_page
-            
+                        
             within(first('.viewing-parties')) do
                 expect(page).to have_content(starttime)
                 expect(page).to have_content(movie_title)
