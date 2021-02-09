@@ -1,6 +1,8 @@
 class Party < ApplicationRecord
   validates :mdb_id, presence: true
   validates :start_time, presence: true
+  # validate duration is numeric and > 0
+  # validate start_time includes time
 
   has_many :viewers, dependent: :destroy
 
