@@ -5,8 +5,8 @@ Create a viewing party for <%= params[:movie] %>
     <%= form.label :duration, 'Duration:' %>
     <%= form.text_field :duration, id: :duration, value: params[:runtime] %>
 
-    <%= form.label :start_date, 'Start Time:' %>
-    <%= form.datetime_field :start_date, id: :start_date %>
+    <%= form.label :start_time, 'Start Time:' %>
+    <%= form.datetime_field :start_time, id: :start_time %>
 
     <%= form.hidden_field :mdb_id, value: params[:movie_id] %>
 

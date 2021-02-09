@@ -1,5 +1,4 @@
 class PartiesController < ApplicationController
-
     def new
         @party = Party.new
     end
@@ -7,7 +6,6 @@ class PartiesController < ApplicationController
     def create
         # params[:party][:mdb_id] = params[movie_id]
         # party[:mdb_id] = params[:id]
-        binding.pry
         new_party = Party.new(party_params)
         # if Party.exists?(email: user[:email])
         #   flash[:error`] = "User already exists."
@@ -20,15 +18,11 @@ class PartiesController < ApplicationController
             flash[:error] = "Dun Dun DUUUUN! try again"
             render :new
         end
-        
-            
     end
 
     private
 
     def party_params
-      params.require(:party).permit(mdb_id, start_time, duration)
+      params.require(:party).permit(:mdb_id, :start_time, :duration)
     end
-  
-
 end

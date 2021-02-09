@@ -3,6 +3,9 @@ require 'rails_helper'
 RSpec.describe "new party page" do
     describe "happy path" do
         it "displays movie details and form", :vcr do
+            @user = create(:user, email: 'test@email.com')
+            allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
+
             mdb_id = 10719
             visit movie_path(mdb_id)
 
@@ -13,16 +16,20 @@ RSpec.describe "new party page" do
         end 
 
         it "can create new viewing party", :vcr do
+            @user = create(:user, email: 'test@email.com')
+            allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
+            
             mdb_id = 10719
             visit movie_path(mdb_id)
             click_button('Create a Viewing Party')
 
             fill_in :duration, with: 200
-            fill_in :start_date, with: '2021-02-29 01:00:00 UTC'
+            fill_in :start_time, with: '2021-02-29 01:00:00 UTC'
 
             click_button 'Submit'
 
             expect(current_path).to eq(dashboard_path)
+            expect(page).to have_content("Yo! You started a party!")
         end
 
 

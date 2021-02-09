@@ -4,6 +4,8 @@ RSpec.describe 'movies show page', type: :feature do
   describe "happy path", :vcr do
     # HOW DO WE USE ONE VCR CASSETTE FOR ALL TESTS? VCR.use_cassette aint workin
     before(:each) do
+      @user = create(:user, email: 'test@email.com')
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
       mdb_id = 10719
       visit movie_path(mdb_id)
     end
