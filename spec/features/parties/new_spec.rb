@@ -8,9 +8,6 @@ RSpec.describe "new party page" do
 
     describe "happy path" do
         it "displays movie details and form", :vcr do
-            @user = create(:user, email: 'test@email.com')
-            allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
-
             mdb_id = 10719
             visit movie_path(mdb_id)
 
@@ -21,16 +18,8 @@ RSpec.describe "new party page" do
         end 
 
         it "can create new viewing party", :vcr do
-            @user = create(:user, email: 'test@email.com')
-            visit login_path
-            fill_in :email, with: 'test@email.com'
-            fill_in :password, with: 'password'
-            click_button 'Log In'
-            
             mdb_id = 10719
-
             visit movie_path(mdb_id)
-            
             click_button('Create a Viewing Party')
 
             fill_in :duration, with: 200
@@ -39,9 +28,32 @@ RSpec.describe "new party page" do
             click_button 'Submit'
 
             expect(current_path).to eq(dashboard_path)
-            
-            # Next up...get viewers added during Party creation
-            # expect(page).to have_content("Yo! You started a party!")
+        end
+
+        it "can add friends and create viewing party", :vcr do
+            jerry = @user.friends.create(email: 'jerry@example.com', name: 'jerry', password: "xyz")
+            achmed = @user.friends.create(email: 'achmed@example.com', name: 'Achmed', password: "xyz")
+
+
+            mdb_id = 10719
+            movie_title = "Elf"
+            visit movie_path(mdb_id)
+            click_button('Create a Viewing Party')
+            duration = 200
+            starttime = '2021-03-01 01:00:00 UTC'
+
+            fill_in :duration, with: duration
+            fill_in :start_time, with: starttime
+            find(:css, "#party_viewers_#{jerry.id}").set(true)
+
+            click_button 'Submit'
+
+            expect(current_path).to eq(dashboard_path)
+                        
+            within(first('.viewing-parties')) do
+                expect(page).to have_content(starttime)
+                expect(page).to have_content(movie_title)
+            end
         end
 
 
