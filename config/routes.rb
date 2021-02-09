@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   
   resources :friendships, only: [:create]
 
+  resources :parties, only: [:new, :create]
+
   get '/dashboard', to: 'dashboard#index'
   get '/discover', to: 'discover#index'
 
