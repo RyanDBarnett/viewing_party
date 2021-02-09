@@ -8,7 +8,6 @@ class Party < ApplicationRecord
   has_many :users, through: :viewers
 
   def viewer_status(id)
-    binding.pry
     x = viewers.find_by(user_id: id)
     x.status
   end

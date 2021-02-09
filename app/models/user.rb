@@ -7,8 +7,8 @@ class User < ApplicationRecord
   has_many :inverse_friendships,
             class_name: 'Friendship',
             foreign_key: 'friend_id',
-            inverse_of: friend 
-  has_many :inverse_friends, through: :inverse_friendships, source: user
+            inverse_of: :friend 
+  has_many :inverse_friends, through: :inverse_friendships, source: :user
   
   validates :email, uniqueness: true, presence: true
   validates :name, presence: true
