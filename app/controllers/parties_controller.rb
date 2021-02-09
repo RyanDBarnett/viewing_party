@@ -9,9 +9,7 @@ class PartiesController < ApplicationController
             new_party.viewers.create(user: current_user, status: 'host')
             party_viewers_params.each do |friend_id|
                 unless friend_id.blank?
-                    new_party.viewers.create(
-                        user_id: friend_id,
-                        status: 'guest')
+                    new_party.viewers.create(user_id: friend_id, status: 'guest')
                 end
             end
             redirect_to dashboard_path, notice: 'Yo! You started a party!'
