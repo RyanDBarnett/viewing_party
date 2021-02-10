@@ -14,7 +14,12 @@
     <%= form.datetime_field :start_time, id: :start_time %>
 
     <%= form.label :invite_friends %>
-    <%= form.collection_check_boxes :viewers, current_user.friends, :id, :name %>
+    <%= form.collection_check_boxes :viewers, current_user.friends, :id, :name do |b| %>
+      <div class="collection-check-box">
+        <%= b.check_box %>
+        <%= b.label %>
+      </div>
+    <% end %>
 
     <%= form.submit 'Submit' %>
   <% end %>
