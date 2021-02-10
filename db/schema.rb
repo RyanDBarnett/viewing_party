@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_09_175229) do
+ActiveRecord::Schema.define(version: 2021_02_10_040646) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,13 +23,22 @@ ActiveRecord::Schema.define(version: 2021_02_09_175229) do
     t.index ["user_id"], name: "index_friendships_on_user_id"
   end
 
+  create_table "movies", force: :cascade do |t|
+    t.integer "mdb_id"
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "parties", force: :cascade do |t|
     t.datetime "start_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "mdb_id"
     t.integer "duration"
-    t.string "movie_title"
+    t.bigint "host_id"
+    t.bigint "movie_id"
+    t.index ["host_id"], name: "index_parties_on_host_id"
+    t.index ["movie_id"], name: "index_parties_on_movie_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -50,6 +59,8 @@ ActiveRecord::Schema.define(version: 2021_02_09_175229) do
 
   add_foreign_key "friendships", "users"
   add_foreign_key "friendships", "users", column: "friend_id"
+  add_foreign_key "parties", "movies"
+  add_foreign_key "parties", "users", column: "host_id"
   add_foreign_key "viewers", "parties"
   add_foreign_key "viewers", "users"
 end
