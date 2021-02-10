@@ -21,8 +21,9 @@
 <section class='viewing-parties'>
   <h2>My Viewing Parties:</h2>
   <% unless current_user.parties.empty? %>
+  <h3>As Host</h3>
   <ul>
-    <% current_user.parties.each do |party|%>
+    <% current_user.host_parties.each do |party|%>
       <li id="party-<%= party.id %>">
         <div><%= link_to party.movie_title, movie_path(party.movie.mdb_id) %></div>
         <div><%= party.strftime %></div>
@@ -34,6 +35,20 @@
       </li>
     <% end %>
   </ul>
+  <h3>As Guest</h3>
+    <ul>
+    <% current_user.guest_parties.each do |party|%>
+      <li id="party-<%= party.id %>">
+        <div><%= link_to party.movie_title, movie_path(party.movie.mdb_id) %></div>
+        <div><%= party.strftime %></div>
+        <div><%= party.viewer_status(current_user.id).capitalize %></div>
+        <h4>Attendees:</h4>
+        <div><% party.users.each do |user| %></div>
+          <li><%= user.name %> (<%= user.email %>)</li>
+        <% end %>
+      </li>
+    <% end %>
+    </ul>
   <% else %>
     <p> You have no parties - host one! </p>
   <% end %>
