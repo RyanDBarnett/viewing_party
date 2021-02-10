@@ -49,7 +49,7 @@ RSpec.describe "new party page" do
             expect(current_path).to eq(dashboard_path)
 
             within('.viewing-parties') do
-                expect(page).to have_content(starttime)
+                expect(page).to have_content('Mar 01, 2021 01:00 AM UTC')
                 expect(page).to have_content(movie_title)
                 expect(page).to have_content('Host')
             end
@@ -60,7 +60,7 @@ RSpec.describe "new party page" do
 
             within('.viewing-parties') do
                 expect(page).to have_content(movie_title)
-                expect(page).to have_content(starttime)
+                expect(page).to have_content('Mar 01, 2021 01:00 AM UTC')
                 expect(page).to have_content('Guest')
             end
         end

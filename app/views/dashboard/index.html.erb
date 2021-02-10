@@ -10,7 +10,7 @@
   <% unless current_user.all_friends.empty? %>
     <ul>
       <% current_user.all_friends.each do |friend| %>
-        <li><%= friend.name %></li>
+        <li><%= friend.name %> (<%= friend.email %>)</li>
       <% end %>
     </ul>
   <% else %>
@@ -25,8 +25,12 @@
     <% current_user.parties.each do |party|%>
       <li id="party-<%= party.id %>">
         <div><%= party.movie_title %></div>
-        <div><%= party.start_time %></div>
+        <div><%= party.strftime %></div>
         <div><%= party.viewer_status(current_user.id).capitalize %></div>
+        <h4>Attendees:</h4>
+        <div><% party.users.each do |user| %></div>
+          <li><%= user.name %> (<%= user.email %>)</li>
+        <% end %>
       </li>
     <% end %>
   </ul>
