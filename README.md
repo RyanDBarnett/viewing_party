@@ -5,6 +5,7 @@
 * [Live App](#live-app)
 * [Project Board](#project-board)
 * [Description](#description)
+* [Work Process](#work-process)
 * [Setup](#setup)
 * [Versions](#versions)
 * [Wireframes](#wireframes)
@@ -22,9 +23,13 @@
 
 [Viewing Parties Github Project Board](https://github.com/RyanDBarnett/viewing_party/projects/1)
 
-## Project Description
+## Description
 
-Viewing party is an application in which users can explore movie options and create a viewing party event for the user and friend's.
+Viewing party is an application in which users can explore movie options and create a viewing party event for the user and friend's. This one week project is a collaboration between [Adam Etzion](https://github.com/aetzion1), [Phil McCarthy](https://github.com/philmccarthy), and [Ryan Barnett](https://github.com/RyanDBarnett).
+
+## Work Process
+
+We utilized a [project board](https://github.com/RyanDBarnett/viewing_party/projects/1) to divide our work into small tasks. These tasks were then assigned to pairs or individuals. Once the task was completed the assignee would make a pull request and a different team member would review the pull request and merge it if it passed review.
 
 ## Setup
 
