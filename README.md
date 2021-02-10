@@ -10,7 +10,7 @@
 * [Learning Goals](#learning-goals)
 * [Requirements](#requirements)
 * [Evaluation](#evaluation)
-* [Reflection](#reflection)
+* [DTR](#dtr)
 * [Contributors](#contributors)
 
 ### Description
@@ -60,6 +60,12 @@ Example wireframes to follow are found [here](https://backend.turing.io/module3/
 ## Evaluation
 
 This project is evaluated based on this [rubric](https://backend.turing.io/module3/projects/viewing_party/rubric).
+
+## DTR
+
+Working effectively in teams comes down to establishing a relationship with the people you’re working with. The DTR (Define the Relationship) document helps facilitate this by establishing communication requirements and building trust between group members.
+
+[DTR document](https://gist.github.com/RyanDBarnett/78f6a5cb6eed5d9586f701be134188b2)
 
 ## Contributors
 
