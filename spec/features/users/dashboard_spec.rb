@@ -37,13 +37,13 @@ RSpec.describe('Dashboard') do
         
         within("#party-#{party1.id}") do
           expect(page).to have_content("Elf")
-          expect(page).to have_content(party1.start_time)
+          expect(page).to have_content('Mar 01, 2021 01:00 AM UTC')
           expect(page).to have_content(viewer1.status.capitalize)
         end
 
         within("#party-#{party2.id}") do
           expect(page).to have_content("Elf-Man")
-          expect(page).to have_content(party2.start_time)
+          expect(page).to have_content('Mar 02, 2021 01:00 AM UTC')
           expect(page).to have_content(viewer2.status.capitalize)
         end
       end
