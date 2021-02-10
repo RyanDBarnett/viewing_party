@@ -12,6 +12,10 @@ class Party < ApplicationRecord
     viewers.find_by(user_id: id).status
   end
 
+  def strftime
+    start_time.strftime("%b %d, %Y %I:%M %p %Z")
+  end
+
   def movie_title
     MovieDbFacade.get_movie_info(mdb_id).title
   end
