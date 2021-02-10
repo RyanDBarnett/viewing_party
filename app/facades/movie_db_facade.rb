@@ -1,28 +1,34 @@
 class MovieDbFacade
   class << self
     def get_films(params)
-      return discover_films unless params[:search].present?
-
-      search_films(params[:search])
+      params[:search].present? ? search_films(params[:search]) : discover_films
     end
 
     def discover_films
       data = MovieService.call_top_films
-      create_films(data)
+      if data.is_a? Hash
+        create_films(data)
+      else
+        data
+      end
     end
 
     def search_films(query)
       data = MovieService.call_search_films(query)
-      create_films(data)
-      # right now returns [] if no films, if we want nil:
-      # @films .eahc do
-      #  retung Member.do if ... see moc tracker
-      # nil
+      if data.is_a? Hash
+        create_films(data)
+      else
+        data
+      end
     end
 
     def get_movie_info(mdb_id)
       data = MovieService.call_movie_info(mdb_id)
-      @film = Film.new(data)
+      if data.is_a? Hash
+        @film = Film.new(data)
+      else
+        data
+      end
     end
 
     private
