@@ -74,6 +74,14 @@ Working effectively in teams comes down to establishing a relationship with the 
 
 ## Contributors
 
-- [Ryan Barnett](https://github.com/RyanDBarnett)
+### Github
+
 - [Adam Etzion](https://github.com/aetzion1)
 - [Phil McCarthy](https://github.com/philmccarthy)
+- [Ryan Barnett](https://github.com/RyanDBarnett)
+
+### LinkedIn
+
+- [Adam Etzion](https://www.linkedin.com/in/adametzion/)
+- [Phil McCarthy](https://www.linkedin.com/in/pjmcc/)
+- [Ryan Barnett](https://www.linkedin.com/in/ryan-barnett-257568168/)
