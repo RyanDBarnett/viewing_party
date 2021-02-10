@@ -25,7 +25,7 @@ http_interactions:
       Connection:
       - keep-alive
       Date:
-      - Tue, 09 Feb 2021 21:49:48 GMT
+      - Wed, 10 Feb 2021 02:31:59 GMT
       Server:
       - openresty
       Access-Control-Allow-Origin:
@@ -36,20 +36,20 @@ http_interactions:
       - ETag, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, Retry-After,
         Content-Length, Content-Range
       Last-Modified:
-      - Tue, 09 Feb 2021 21:49:48 GMT
+      - Wed, 10 Feb 2021 02:31:59 GMT
       X-Cache:
       - Error from cloudfront
       Via:
-      - 1.1 f0b290c4e2273a7586bc6f080031d9bc.cloudfront.net (CloudFront)
+      - 1.1 38059ba65876500c040fb73e2cbaebf5.cloudfront.net (CloudFront)
       X-Amz-Cf-Pop:
       - DEN50-C2
       X-Amz-Cf-Id:
-      - 0XzY9htfWutbgU8BkSyPBc5UwbDBUUuO4_g6SJlArJhwm6XlDEixiw==
+      - YnrhnEAHGPpB79uy9wI5U86o7VHT67_ze0GIlhhnpmSMyQb3PBEHfQ==
     body:
       encoding: UTF-8
       string: '{"success":false,"status_code":34,"status_message":"The resource you
         requested could not be found."}'
-  recorded_at: Tue, 09 Feb 2021 21:49:48 GMT
+  recorded_at: Wed, 10 Feb 2021 02:31:59 GMT
 - request:
     method: get
     uri: https://api.themoviedb.org/3/movie/?api_key=DONT_EXPOSE_MY_DATA&append_to_response=credits,reviews
@@ -75,7 +75,7 @@ http_interactions:
       Connection:
       - keep-alive
       Date:
-      - Tue, 09 Feb 2021 21:49:48 GMT
+      - Wed, 10 Feb 2021 02:31:59 GMT
       Server:
       - openresty
       Access-Control-Allow-Origin:
@@ -86,18 +86,18 @@ http_interactions:
       - ETag, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, Retry-After,
         Content-Length, Content-Range
       Last-Modified:
-      - Tue, 09 Feb 2021 21:49:48 GMT
+      - Wed, 10 Feb 2021 02:31:59 GMT
       X-Cache:
       - Error from cloudfront
       Via:
-      - 1.1 f0b290c4e2273a7586bc6f080031d9bc.cloudfront.net (CloudFront)
+      - 1.1 235fa9476ee502b13c0801d1fa3b57a2.cloudfront.net (CloudFront)
       X-Amz-Cf-Pop:
       - DEN50-C2
       X-Amz-Cf-Id:
-      - WwbkRqCKbQX_9OpZ0dtpnwhMT01ERhTb9VwNG4vCVdvqIJA0fR3pdg==
+      - 7K6MYAIeRrwQ3VimRoqmRp7Txt3_FYW1BK21svopC0AVToIkCf0dsA==
     body:
       encoding: UTF-8
       string: '{"success":false,"status_code":34,"status_message":"The resource you
         requested could not be found."}'
-  recorded_at: Tue, 09 Feb 2021 21:49:48 GMT
+  recorded_at: Wed, 10 Feb 2021 02:31:59 GMT
 recorded_with: VCR 6.0.0
