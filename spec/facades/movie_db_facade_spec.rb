@@ -9,7 +9,7 @@ RSpec.describe MovieDbFacade do
 
     # let(:film_search) do
     #   query = "Elf"
-    #   VCR.use_cassette("happy_path/search_films") { MovieDbFacade.search_films(query) }
+    # VCR.use_cassette("happy_path/search_films") { MovieDbFacade.search_films(query) }
     # end
 
     it 'discovers top 40 films', :vcr do
@@ -20,11 +20,13 @@ RSpec.describe MovieDbFacade do
       expect(films[0]).to be_a(Film)
     end
 
-    it 'searches for films', :vcr do
-      query = 'Elf'
-      film_search = MovieDbFacade.search_films(query)
-      expect(film_search).to be_an(Array)
-      expect(film_search[0]).to be_a(Film)
+    it 'searches for films' do
+      VCR.use_cassette("MovieDbFacade/happy_path/searches_for_films") do
+        query = 'Elf'
+        film_search = MovieDbFacade.search_films(query)
+        expect(film_search).to be_an(Array)
+        expect(film_search[0]).to be_a(Film)
+      end
     end
     
     it 'gets film data', :vcr do
