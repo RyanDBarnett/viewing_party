@@ -16,6 +16,7 @@ RSpec.describe "new party page" do
             click_button('Create a Viewing Party')
             
             expect(page).to have_content("Create a Viewing Party for Elf")
+
             expect(page).to have_css("input[value = '97']")  
         end 
         

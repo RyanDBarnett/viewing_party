@@ -27,16 +27,16 @@ RSpec.describe('Dashboard') do
       it 'should display all of the users parties', :vcr do
         movie1 = Movie.create(mdb_id: 10719, title: 'Elf')
         movie2 = Movie.create(mdb_id: 143569, title: 'Elf-man')
-        party1 = Party.create(movie: movie1, start_time: '2021-03-01 01:00:00 UTC')
-        viewer1 = Viewer.create(status: 'host', party: party1, user: @user)
-        party2 = Party.create(movie: movie2, start_time: '2021-03-02 01:00:00 UTC')
-        viewer2 = Viewer.create(status: 'guest', party: party2, user: @user)
+        party1 = Party.create!(movie: movie1, host: @user, start_time: '2021-03-01 01:00:00 UTC', duration: 200)
+        viewer1 = party1.viewers.create!(status: 'host', party: party1, user: @user)
+        party2 = Party.create!(movie: movie2, host: @user, start_time: '2021-03-02 01:00:00 UTC', duration: 205)
+        viewer2 = party2.viewers.create!(status: 'host', party: party2, user: @user)
 
         visit dashboard_path
 
         expect(page).to have_content('My Viewing Parties:')
         expect(page).to have_selector("section[class='viewing-parties']")
-        
+
         within("#party-#{party1.id}") do
           expect(page).to have_content("Elf")
           expect(page).to have_content('Mar 01, 2021 01:00 AM UTC')
@@ -44,7 +44,7 @@ RSpec.describe('Dashboard') do
         end
 
         within("#party-#{party2.id}") do
-          expect(page).to have_content("Elf-Man")
+          expect(page).to have_content("Elf-man")
           expect(page).to have_content('Mar 02, 2021 01:00 AM UTC')
           expect(page).to have_content(viewer2.status.capitalize)
         end
