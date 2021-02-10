@@ -8,7 +8,7 @@
 <div id="party_form">
   <%= form_with model: @party, local: true do |form| %>
     <%= form.label :duration, 'Duration:' %>
-    <%= form.text_field :duration, id: :duration, value: params[:runtime] %>
+    <%= form.number_field :duration, id: :duration, min: 0, value: params[:runtime] %>
 
     <%= form.label :start_time, 'Start Time:' %>
     <%= form.datetime_field :start_time, id: :start_time %>
