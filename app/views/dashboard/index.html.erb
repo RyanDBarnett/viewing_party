@@ -24,7 +24,7 @@
   <ul>
     <% current_user.parties.each do |party|%>
       <li id="party-<%= party.id %>">
-        <div><%= party.movie_title %></div>
+        <div><%= link_to party.movie_title, movie_path(party.movie.mdb_id) %></div>
         <div><%= party.strftime %></div>
         <div><%= party.viewer_status(current_user.id).capitalize %></div>
         <h4>Attendees:</h4>
