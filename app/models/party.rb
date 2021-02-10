@@ -9,7 +9,7 @@ class Party < ApplicationRecord
   has_many :users, through: :viewers
 
   def strftime
-    start_time.strftime("%b %d, %Y %I:%M %p %Z")
+    start_time.strftime('%b %d, %Y %I:%M %p %Z')
   end
 
   def viewer_status(id)
