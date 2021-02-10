@@ -1,6 +1,7 @@
-<% if params[:movie] %>
-  Create a Viewing Party for <%= params[:movie] %>
-<% elsif params[:party][:movie_title] %>
+<% if session[:movie_title] %>
+  Create a Viewing Party for <%= session[:movie_title] %>
+<% else %> <%#params[:party][:movie_title] %>
+  <% binding.pry %>
   Create a Viewing Party for <%= params[:party][:movie_title] %>
 <% end %>
 

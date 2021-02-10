@@ -1,8 +1,6 @@
 class PartiesController < ApplicationController
     def new
         @party = Party.new
-        session[:mdb_id] = params[:movie_id]
-        session[:movie_title] = params[:movie]
     end
 
     def create

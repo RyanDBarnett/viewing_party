@@ -18,7 +18,8 @@ class Party < ApplicationRecord
   end
 
   def movie_title
+    require 'pry'; binding.pry
     # MovieDbFacade.get_movie_info(mdb_id).title
-    movie.title
+    Movie.find_by(id: movie_id).title
   end
 end
