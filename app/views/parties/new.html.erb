@@ -4,7 +4,6 @@
   Create a Viewing Party for <%= params[:party][:movie_title] %>
 <% end %>
 
-
 <div id="party_form">
   <%= form_with model: @party, local: true do |form| %>
     <%= form.label :duration, 'Duration:' %>

@@ -6,7 +6,11 @@ class PartiesController < ApplicationController
     end
 
     def create
-        new_party = current_user.parties.new(party_params)
+        movie = Movie.create(mdb_id: session[:mdb_id], title: session[:movie_title])
+        party = party_params
+        party[:host] = current_user
+        party[:movie] = movie
+        new_party = current_user.parties.new(party)
         if new_party.save
             new_party.viewers.create(user: current_user, status: 'host')
             party_viewers.each do |friend_id|
@@ -22,9 +26,9 @@ class PartiesController < ApplicationController
     private
 
     def party_params
-        params[:party][:mdb_id] = session[:mdb_id]
-        params[:party][:movie_title] = session[:movie_title]
-        params.require(:party).permit(:mdb_id, :movie_title, :start_time, :duration)
+        params[:party][:movie] = session[:mdb_id]
+        params[:party][:host] = current_user
+        params.require(:party).permit(:movie, :host, :start_time, :duration)
     end
 
     def party_viewers
