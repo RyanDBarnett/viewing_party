@@ -2,8 +2,9 @@
 
 ## Table of Contents
 
-* [Description](#description)
 * [Live App](#live-app)
+* [Project Board](#project-board)
+* [Description](#description)
 * [Setup](#setup)
 * [Versions](#versions)
 * [Wireframes](#wireframes)
@@ -13,13 +14,17 @@
 * [DTR](#dtr)
 * [Contributors](#contributors)
 
-### Description
-
-Viewing party is an application in which users can explore movie options and create a viewing party event for the user and friend's.
-
 ## Live App
 
 [Viewing Parties Live App](https://movie-viewing-party.herokuapp.com/)
+
+## Project Board
+
+[Viewing Parties Github Project Board](https://github.com/RyanDBarnett/viewing_party/projects/1)
+
+## Project Description
+
+Viewing party is an application in which users can explore movie options and create a viewing party event for the user and friend's.
 
 ## Setup
 
