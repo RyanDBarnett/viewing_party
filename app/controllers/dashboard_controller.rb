@@ -1,6 +1,6 @@
 class DashboardController < ApplicationController
   skip_before_action :block_public_access
-  
+
   def index
     return not_logged_in_notice unless current_user
 
