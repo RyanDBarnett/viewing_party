@@ -4,11 +4,9 @@ class User < ApplicationRecord
   has_many :viewers, dependent: :destroy
   has_many :parties, through: :viewers
 
-  has_many :inverse_friendships,
-            class_name: 'Friendship',
-            foreign_key: 'friend_id'
+  has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
   has_many :inverse_friends, through: :inverse_friendships, source: :user
-  
+
   validates :email, uniqueness: true, presence: true
   validates :name, presence: true
 
