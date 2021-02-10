@@ -63,6 +63,14 @@ This project is evaluated based on this [rubric](https://backend.turing.io/modul
 
 ## Contributors
 
-- [Ryan Barnett](https://github.com/RyanDBarnett)
+### Github
+
 - [Adam Etzion](https://github.com/aetzion1)
 - [Phil McCarthy](https://github.com/philmccarthy)
+- [Ryan Barnett](https://github.com/RyanDBarnett)
+
+### LinkedIn
+
+- [Adam Etzion](https://www.linkedin.com/in/adametzion/)
+- [Phil McCarthy](https://www.linkedin.com/in/pjmcc/)
+- [Ryan Barnett](https://www.linkedin.com/in/ryan-barnett-257568168/)
