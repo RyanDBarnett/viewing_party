@@ -38,13 +38,13 @@ RSpec.describe('Dashboard') do
         expect(page).to have_selector("section[class='viewing-parties']")
 
         within("#party-#{party1.id}") do
-          expect(page).to have_content("Elf")
+          expect(page).to have_link(movie1.title, href: movie_path(movie1.mdb_id))
           expect(page).to have_content('Mar 01, 2021 01:00 AM UTC')
           expect(page).to have_content(viewer1.status.capitalize)
         end
 
         within("#party-#{party2.id}") do
-          expect(page).to have_content("Elf-man")
+          expect(page).to have_link(movie2.title, href: movie_path(movie2.mdb_id))
           expect(page).to have_content('Mar 02, 2021 01:00 AM UTC')
           expect(page).to have_content(viewer2.status.capitalize)
         end
@@ -128,7 +128,7 @@ RSpec.describe('Dashboard') do
                 fill_in 'email', with: @other_user.email
 
                 click_button 'Add Friend'
-                
+
                 fill_in 'email', with: @other_user.email
 
                 click_button 'Add Friend'
