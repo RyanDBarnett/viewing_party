@@ -1,10 +1,11 @@
 class Party < ApplicationRecord
-  validates :mdb_id, presence: true
+  validates :duration, presence: true
   validates :start_time, presence: true
-  validates :movie_title, presence: true
   # validate duration is numeric and > 0
   # validate start_time includes time
 
+  belongs_to :movie
+  belongs_to :host, class_name: 'User'
   has_many :viewers, dependent: :destroy
   has_many :users, through: :viewers
 
@@ -17,6 +18,7 @@ class Party < ApplicationRecord
   end
 
   def movie_title
-    MovieDbFacade.get_movie_info(mdb_id).title
+    # MovieDbFacade.get_movie_info(mdb_id).title
+    movie.title
   end
 end
