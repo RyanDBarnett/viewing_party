@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     #   render :new and return
     # end
     new_user = User.new(user_params)
-    if new_user.save(user_params)
+    if new_user.save
       session[:user_id] = new_user.id
       flash[:success] = "Welcome, #{current_user.name}"
       redirect_to dashboard_path
