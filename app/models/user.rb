@@ -19,5 +19,4 @@ class User < ApplicationRecord
   def all_friends
     friends + inverse_friends
   end
-
 end
