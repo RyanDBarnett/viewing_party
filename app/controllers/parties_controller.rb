@@ -1,6 +1,8 @@
 class PartiesController < ApplicationController
     def new
         @party = Party.new
+        session[:mdb_id] = params[:movie_id]
+        session[:movie_title] = params[:movie]
     end
 
     def create
@@ -20,6 +22,8 @@ class PartiesController < ApplicationController
     private
 
     def party_params
+        params[:party][:mdb_id] = session[:mdb_id]
+        params[:party][:movie_title] = session[:movie_title]
         params.require(:party).permit(:mdb_id, :movie_title, :start_time, :duration)
     end
 
