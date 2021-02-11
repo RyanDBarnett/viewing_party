@@ -1,15 +1,11 @@
 class MovieService
   class << self
     def call_top_films
-      page_one = discover(1)
-      page_two = discover(2)
-      page_one.merge(page_two) { |_key, p1, p2| p1 + p2 }
+      combine(discover(1), discover(2))
     end
 
     def call_search_films(query)
-      page_one = search(query, 1)
-      page_two = search(query, 2)
-      page_one.merge(page_two) { |_key, p1, p2| p1 + p2 }
+      combine(search(query, 1), search(query, 2))
     end
 
     def call_movie_info(mdb_id)
@@ -18,38 +14,48 @@ class MovieService
 
     private
 
-    def movie_info(mdb_id)
-      response = conn.get("movie/#{mdb_id}") do |req|
-        req.params['api_key'] = ENV['TMDB_API_KEY']
-        req.params['append_to_response'] = 'credits,reviews'
-      end
-      parse_data(response)
+    def conn
+      Faraday.new(
+        url: 'https://api.themoviedb.org/3/',
+        params: { api_key: ENV['TMDB_API_KEY'] }
+      )
     end
 
     def discover(page)
       response = conn.get('discover/movie') do |req|
-        req.params['api_key'] = ENV['TMDB_API_KEY']
-        req.params['sort_by'] = 'popularity.desc'
-        req.params['page'] = page
+        req.params[:sort_by] = 'popularity.desc'
+        req.params[:page] = page
       end
       parse_data(response)
     end
 
     def search(query, page)
       response = conn.get('search/movie') do |req|
-        req.params['api_key'] = ENV['TMDB_API_KEY']
-        req.params['query'] = query
-        req.params['page'] = page
+        req.params[:query] = query
+        req.params[:page] = page
       end
       parse_data(response)
     end
 
-    def conn
-      Faraday.new('https://api.themoviedb.org/3/')
+    def movie_info(mdb_id)
+      response = conn.get("movie/#{mdb_id}") do |req|
+        req.params[:append_to_response] = 'credits,reviews'
+      end
+      parse_data(response)
+    end
+
+    def combine(page_one, page_two)
+      return page_one if page_one.is_a? String
+
+      page_one.merge(page_two) { |_key, p1, p2| p1 + p2 }
     end
 
     def parse_data(response)
-      JSON.parse(response.body, symbolize_names: true)
+      if response.success?
+        JSON.parse(response.body, symbolize_names: true)
+      else
+        'Our movie info provider is having technical difficulties! Please try again later.'
+      end
     end
   end
 end

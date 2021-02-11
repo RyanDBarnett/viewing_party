@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   skip_before_action :block_public_access
+  
   def new
   end
 

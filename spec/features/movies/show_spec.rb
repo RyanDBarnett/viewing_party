@@ -38,5 +38,14 @@ RSpec.describe 'movies show page', type: :feature do
       click_on 'Create a Viewing Party'
       expect(current_path).to eq(new_party_path)
     end
+
+    it 'displays an error message if API request fails', :vcr do
+      stub_request(:get, 'https://api.themoviedb.org/3/movie/10719?api_key=e39822378fcaf2d82d455da242fd3002&append_to_response=credits,reviews').
+        to_return(status: 500, body: "")
+      
+      visit movie_path(10719)
+      
+      expect(page).to have_content('Our movie info provider is having technical difficulties! Please try again later.')
+    end
   end
 end
