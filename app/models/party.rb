@@ -1,7 +1,6 @@
 class Party < ApplicationRecord
-  validates :duration, presence: true
+  validates :duration, presence: true, numericality: { only_integer: true, greater_than: 0 }
   validates :start_time, presence: true
-  # validate duration is numeric and > 0
   # validate start_time includes time
 
   belongs_to :movie
@@ -9,15 +8,15 @@ class Party < ApplicationRecord
   has_many :viewers, dependent: :destroy
   has_many :users, through: :viewers
 
-  def viewer_status(id)
-    viewers.find_by(user_id: id).status
-  end
-
   def strftime
-    start_time.strftime("%b %d, %Y %I:%M %p %Z")
+    start_time.strftime('%b %d, %Y %I:%M %p %Z')
   end
 
   def movie_title
     movie.title
+  end
+
+  def viewer_status(id)
+    viewers.find_by(user_id: id).status.capitalize
   end
 end

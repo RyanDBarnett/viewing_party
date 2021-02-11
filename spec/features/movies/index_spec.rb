@@ -13,7 +13,7 @@ RSpec.describe 'movies index', type: :feature do
 
         visit movies_path
 
-        expect(page).to have_content("40 Movies")
+        expect(page).to have_content("Discover Movies")
 
         expect(page).to have_css(".movie", count: 40)
 
@@ -53,10 +53,9 @@ RSpec.describe 'movies index', type: :feature do
         fill_in :search, with: ''
 
         expect(current_path).to eq(movies_path)
-        expect(page).to have_content('40 Movies')
         expect(page).to have_css(".movie", count: 40)
       end
-# DO WE NEED THESE TESTS IF ALREADY TESTS IN FACADE SPEC?
+
       it 'returns 0 movies when no matches exist', :vcr do        
         VCR.insert_cassette("spec/fixtures/vcr_cassettes/sad_path/returns_nil_if_no_match_is_found_in_search")
         visit movies_path
@@ -65,7 +64,6 @@ RSpec.describe 'movies index', type: :feature do
         click_button 'Search'
 
         expect(current_path).to eq(movies_path)
-        expect(page).to have_content('0 Movies')
         expect(page).to have_css(".movie", count: 0)
       end
 
@@ -75,6 +73,25 @@ RSpec.describe 'movies index', type: :feature do
         
         expect(current_path).to eq(root_path)
         expect(page).to have_content('Members only! Sign up or login to access that page.')
+      end
+      
+      it 'returns an error message if the API fails to return movie data', :vcr do
+        stub_request(:get, 'https://api.themoviedb.org/3/discover/movie?api_key=e39822378fcaf2d82d455da242fd3002&page=1&sort_by=popularity.desc').
+          to_return(status: 500, body: "")
+
+        stub_request(:get, 'https://api.themoviedb.org/3/search/movie?api_key=e39822378fcaf2d82d455da242fd3002&page=1&query=Elf').
+          to_return(status: 500, body: "")
+
+        stub_request(:get, 'https://api.themoviedb.org/3/movie/2?api_key=e39822378fcaf2d82d455da242fd3002&append_to_response=credits,reviews').
+          to_return(status: 500, body: "")
+
+        expect(MovieDbFacade.discover_films).to eq('Our movie info provider is having technical difficulties! Please try again later.')
+        expect(MovieDbFacade.search_films('Elf')).to eq('Our movie info provider is having technical difficulties! Please try again later.')
+        expect(MovieDbFacade.get_movie_info(2)).to eq('Our movie info provider is having technical difficulties! Please try again later.')
+        
+        visit movies_path
+
+        expect(page).to have_content('Our movie info provider is having technical difficulties! Please try again later.')
       end
     end
   end

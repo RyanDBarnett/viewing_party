@@ -30,7 +30,7 @@
       <li id="party-<%= party.id %>">
         <div><%= link_to party.movie.title, movie_path(party.movie.mdb_id) %></div>
         <div><%= party.strftime %></div>
-        <div><%= party.viewer_status(current_user.id).capitalize %></div>
+        <div><%= party.viewer_status(current_user.id) %></div>
         <h4>Attendees:</h4>
         <div><% party.users.each do |user| %></div>
           <li><%= user.name %> (<%= user.email %>)</li>
