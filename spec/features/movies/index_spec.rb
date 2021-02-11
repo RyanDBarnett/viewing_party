@@ -76,13 +76,13 @@ RSpec.describe 'movies index', type: :feature do
       end
       
       it 'returns an error message if the API fails to return movie data', :vcr do
-        stub_request(:get, 'https://api.themoviedb.org/3/discover/movie?api_key=e39822378fcaf2d82d455da242fd3002&page=1&sort_by=popularity.desc').
+        stub_request(:get, "https://api.themoviedb.org/3/discover/movie?api_key=#{ENV['TMDB_API_KEY']}&page=1&sort_by=popularity.desc").
           to_return(status: 500, body: "")
 
-        stub_request(:get, 'https://api.themoviedb.org/3/search/movie?api_key=e39822378fcaf2d82d455da242fd3002&page=1&query=Elf').
+        stub_request(:get, "https://api.themoviedb.org/3/search/movie?api_key=#{ENV['TMDB_API_KEY']}&page=1&query=Elf").
           to_return(status: 500, body: "")
 
-        stub_request(:get, 'https://api.themoviedb.org/3/movie/2?api_key=e39822378fcaf2d82d455da242fd3002&append_to_response=credits,reviews').
+        stub_request(:get, "https://api.themoviedb.org/3/movie/2?api_key=#{ENV['TMDB_API_KEY']}&append_to_response=credits,reviews").
           to_return(status: 500, body: "")
 
         expect(MovieDbFacade.discover_films).to eq('Our movie info provider is having technical difficulties! Please try again later.')
