@@ -12,10 +12,6 @@ class Party < ApplicationRecord
     start_time.strftime('%b %d, %Y %I:%M %p %Z')
   end
 
-  def movie_title
-    movie.title
-  end
-
   def viewer_status(id)
     viewers.find_by(user_id: id).status.capitalize
   end
