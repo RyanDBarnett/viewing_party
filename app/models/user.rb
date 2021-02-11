@@ -17,4 +17,12 @@ class User < ApplicationRecord
   def all_friends
     friends + inverse_friends
   end
+
+  def host_parties
+    parties.select { |party| party.host_id == self.id }
+  end
+
+  def guest_parties
+    parties.select { |party| party.host_id != self.id }
+  end
 end

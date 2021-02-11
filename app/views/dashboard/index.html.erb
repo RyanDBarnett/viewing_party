@@ -20,9 +20,13 @@
 
 <section class='viewing-parties'>
   <h2>My Viewing Parties:</h2>
-  <% unless current_user.parties.empty? %>
-  <ul>
-    <% current_user.parties.each do |party|%>
+  <% if current_user.parties.empty? %>
+      <p> You have no parties - host one! </p>
+  <% end %>
+  <h3>As Host</h3>
+  <% unless current_user.host_parties.empty? %>
+    <ul>
+    <% current_user.host_parties.each do |party|%>
       <li id="party-<%= party.id %>">
         <div><%= link_to party.movie.title, movie_path(party.movie.mdb_id) %></div>
         <div><%= party.strftime %></div>
@@ -33,8 +37,23 @@
         <% end %>
       </li>
     <% end %>
-  </ul>
-  <% else %>
-    <p> You have no parties - host one! </p>
-  <% end %>
+    </ul>
+    <% end %>
+  <h3>As Guest</h3>
+    <% unless current_user.guest_parties.empty? %>
+    <ul>
+    <% current_user.guest_parties.each do |party|%>
+      <li id="party-<%= party.id %>">
+      <%# binding.pry %>
+        <div><%= link_to party.movie.title, movie_path(party.movie.mdb_id) %></div>
+        <div><%= party.strftime %></div>
+        <div><%= party.viewer_status(current_user.id).capitalize %></div>
+        <h4>Attendees:</h4>
+        <div><% party.users.each do |user| %></div>
+          <li><%= user.name %> (<%= user.email %>)</li>
+        <% end %>
+      </li>
+    <% end %>
+    </ul>
+    <% end %>
 </section>
