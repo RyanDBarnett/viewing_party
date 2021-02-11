@@ -40,7 +40,7 @@ RSpec.describe 'movies show page', type: :feature do
     end
 
     it 'displays an error message if API request fails', :vcr do
-      stub_request(:get, 'https://api.themoviedb.org/3/movie/10719?api_key=e39822378fcaf2d82d455da242fd3002&append_to_response=credits,reviews').
+      stub_request(:get, "https://api.themoviedb.org/3/movie/10719?api_key=#{ENV['TMDB_API_KEY']}&append_to_response=credits,reviews").
         to_return(status: 500, body: "")
       
       visit movie_path(10719)
