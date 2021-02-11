@@ -18,6 +18,6 @@ class Party < ApplicationRecord
   end
 
   def movie_title
-    Movie.find_by(id: movie_id).title
+    movie.title
   end
 end
